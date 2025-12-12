@@ -4,15 +4,6 @@ import pytest
 
 url = "https://swapi.dev/api/people/"
 
-response = httpx.get(url)
-print(response)
-
-data = response.json()
-print(data)
-
-status_code = response.status_code
-print(status_code)
-
 def test_api_is_accessible():
     response = httpx.get(url)
     assert response.status_code == 200
@@ -52,7 +43,6 @@ def test_response_structure():
     (3, "R2-D2"),
     (4, "Darth Vader"),
 ])
-
 def test_multiple_characters(character_id, expected_name):
     response = httpx.get(f"{url}{character_id}/")
     data = response.json()
